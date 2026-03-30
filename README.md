@@ -12,23 +12,6 @@ Este repositorio contiene el desarrollo de tres ejercicios prácticos usando **A
 
 ---
 
-## 📁 Estructura del Repositorio
-
-```
-├── Punto_1_Compuertas_Logicas/
-│   ├── compuertas_logicas.ino
-│   └── README_P1.md
-├── Punto_2_Conversor_Binario_Hex/
-│   ├── conversor_binario_hex.ino
-│   └── README_P2.md
-├── Punto_3_Semaforo_Vial/
-│   ├── semaforo_vial.ino
-│   └── README_P3.md
-└── README.md
-```
-
----
-
 ## ⚡ Punto 1 — Simulación de Compuertas Lógicas (AND, NOT, OR)
 
 ### 🔗 Enlace Tinkercad
@@ -36,6 +19,18 @@ Este repositorio contiene el desarrollo de tres ejercicios prácticos usando **A
 
 ### 📌 Descripción
 Simulación del comportamiento de las compuertas lógicas fundamentales **AND**, **OR** y **NOT** mediante chips integrados reales conectados a un Arduino UNO. Las entradas se controlan con un DIP Switch y los resultados se visualizan a través de LEDs y el Monitor Serie.
+
+### 🖼️ Evidencia Punto 1
+
+**Esquemático del circuito:**  
+![Esquemático Punto 1](p1_esquematico.png)
+
+**Circuito en Tinkercad:**  
+![Circuito Punto 1](p1_circuito.png)
+
+**Simulación en ejecución:**  
+![Simulación Punto 1 - Vista 1](p1_simulacion1.png)  
+![Simulación Punto 1 - Vista 2](p1_simulacion2.png)
 
 ### 🧰 Componentes
 | Componente | Cantidad | Función |
@@ -72,37 +67,34 @@ Simulación del comportamiento de las compuertas lógicas fundamentales **AND**,
  * Conexión: DIP Switch a pines A0 y A1 del Arduino
  */
 
-const int pinEntradaA = A0; // Conectado al DIP Switch 1
-const int pinEntradaB = A1; // Conectado al DIP Switch 2
+const int pinEntradaA = A0;
+const int pinEntradaB = A1;
 
 void setup() {
   pinMode(pinEntradaA, INPUT);
   pinMode(pinEntradaB, INPUT);
   Serial.begin(9600);
   Serial.println("--- PRUEBA DE COMPUERTAS LÓGICAS ACTIVA ---");
-  Serial.println("Leyendo estados de A0 y A1...");
 }
 
 void loop() {
   int A = digitalRead(pinEntradaA);
   int B = digitalRead(pinEntradaB);
 
-  Serial.print("Entrada A: "); Serial.print(A);
-  Serial.print(" | Entrada B: "); Serial.print(B);
-  Serial.print(" -> [NOT A: "); Serial.print(!A);
-  Serial.print("] [AND: "); Serial.print(A && B);
-  Serial.print("] [OR: "); Serial.print(A || B);
-  Serial.println("]");
+  Serial.print("A="); Serial.print(A);
+  Serial.print(" | B="); Serial.print(B);
+  Serial.print(" || NOT A="); Serial.print(!A);
+  Serial.print(" | AND="); Serial.print(A && B);
+  Serial.print(" | OR="); Serial.println(A || B);
 
   delay(250);
 }
 ```
 
-### 🧠 Explicación del Código
-- El Arduino lee el estado digital de los pines A0 y A1 conectados al DIP Switch.
-- Calcula en software el resultado de NOT, AND y OR para mostrarlos en el Monitor Serie.
-- Los chips 74HC (NOT, AND, OR) realizan el cálculo físicamente en el circuito, encendiendo los LEDs correspondientes de forma independiente al Arduino.
-- El `delay(250)` evita que el Monitor Serie se sature con lecturas demasiado rápidas.
+### 🧠 Explicación
+- El Arduino lee el estado digital de A0 y A1 conectados al DIP Switch.
+- Calcula en software NOT, AND y OR para mostrarlos en el Monitor Serie.
+- Los chips 74HC realizan el cálculo físicamente en el circuito, encendiendo los LEDs correspondientes.
 
 ---
 
@@ -114,20 +106,30 @@ void loop() {
 ### 📌 Descripción
 Conversión de un número binario de **4 bits** (ingresado mediante un DIP Switch) a su representante hexadecimal, visualizado en un **display de 7 segmentos de cátodo común**. Permite mostrar valores del **0 al F** (0–15 en decimal).
 
+### 🖼️ Evidencia Punto 2
+
+**Circuito en Tinkercad:**  
+![Circuito Punto 2](p2_circuito.png)
+
+**Simulación en ejecución:**  
+![Simulación Punto 2](p2_simulacion.png)
+
+**Lista de componentes:**  
+![Componentes Punto 2](p2_componentes.png)
+
 ### 🧰 Componentes
 | Componente | Cantidad | Función |
 |---|---|---|
 | Arduino UNO (R3) | 1 | Controlador principal |
-| DIP Switch SPST x4 (SW1) | 1 | Entrada binaria de 4 bits |
+| DIP Switch SPST x4 | 1 | Entrada binaria de 4 bits |
 | Display 7 segmentos cátodo común | 1 | Salida hexadecimal |
-| Resistencia 220 Ω (RR1) | 1 | Protección del display |
-| Resistencias 10 kΩ (RR2–RR5) | 4 | Pull-down para el DIP Switch |
+| Resistencia 220 Ω | 1 | Protección del display |
+| Resistencias 10 kΩ | 4 | Pull-down para el DIP Switch |
 | Protoboard | 1 | Montaje del circuito |
 
 ### 🔌 Conexiones
-- **Entradas (DIP Switch):** A0=bit0 (valor 1), A1=bit1 (valor 2), A2=bit2 (valor 4), A3=bit3 (valor 8)
-- **Salidas (Display 7 seg):** Segmentos a–g conectados a pines digitales **2 al 8**
-- **GND:** Cátodo común del display a GND del Arduino
+- **Entradas (DIP Switch):** A0=bit0 (1), A1=bit1 (2), A2=bit2 (4), A3=bit3 (8)
+- **Salidas (Display 7 seg):** Segmentos a–g → pines digitales **D2 al D8**
 
 ### 📊 Conversión Binario → Hexadecimal
 
@@ -152,7 +154,6 @@ Conversión de un número binario de **4 bits** (ingresado mediante un DIP Switc
 const int segmentos[] = {2, 3, 4, 5, 6, 7, 8};
 const int switchPins[] = {A0, A1, A2, A3};
 
-// Matriz cátodo común: 1=encendido, 0=apagado (segmentos a,b,c,d,e,f,g)
 const byte digitosHex[16][7] = {
   {1,1,1,1,1,1,0}, // 0
   {0,1,1,0,0,0,0}, // 1
@@ -194,10 +195,10 @@ void escribirDisplay(int index) {
 }
 ```
 
-### 🧠 Explicación del Código
-- El DIP Switch actúa como un número binario de 4 bits. Cada interruptor representa una potencia de 2 (1, 2, 4, 8).
+### 🧠 Explicación
+- El DIP Switch actúa como número binario de 4 bits. Cada interruptor representa una potencia de 2 (1, 2, 4, 8).
 - Se suma el valor de cada bit activo para obtener el número decimal (0–15).
-- La función `escribirDisplay()` consulta la matriz `digitosHex` y enciende/apaga cada segmento del display para representar el dígito hexadecimal correspondiente.
+- La función `escribirDisplay()` consulta la matriz `digitosHex` y enciende/apaga cada segmento del display.
 
 ---
 
@@ -207,7 +208,18 @@ void escribirDisplay(int index) {
 [Ver simulación en Tinkercad](https://www.tinkercad.com/things/aehavrkHCCA-epic-kieran-krunk/editel)
 
 ### 📌 Descripción
-Simulación de un **semáforo vial** con tres LEDs (Verde, Amarillo, Rojo) que ciclan automáticamente respetando tiempos predefinidos para cada fase. Se incluye salida por Monitor Serie para seguimiento del estado actual.
+Simulación de un **semáforo vial** con tres LEDs (Verde, Amarillo, Rojo) que ciclan automáticamente respetando tiempos predefinidos para cada fase, con salida por Monitor Serie para seguimiento del estado actual.
+
+### 🖼️ Evidencia Punto 3
+
+**Circuito en Tinkercad:**  
+![Circuito Punto 3](p3_circuito.png)
+
+**Simulación en ejecución:**  
+![Simulación Punto 3](p3_simulacion.png)
+
+**Esquemático del circuito:**  
+![Esquemático Punto 3](p3_esquematico.png)
 
 ### 🧰 Componentes
 | Componente | Cantidad | Función |
@@ -244,9 +256,9 @@ const int ledVerde    = 2;
 const int ledAmarillo = 3;
 const int ledRojo     = 4;
 
-const unsigned long tiempoVerde    = 5000; // 5 segundos
-const unsigned long tiempoAmarillo = 2000; // 2 segundos
-const unsigned long tiempoRojo     = 5000; // 5 segundos
+const unsigned long tiempoVerde    = 5000;
+const unsigned long tiempoAmarillo = 2000;
+const unsigned long tiempoRojo     = 5000;
 
 void setup() {
   pinMode(ledVerde, OUTPUT);
@@ -257,22 +269,19 @@ void setup() {
 }
 
 void loop() {
-  // FASE 1: VERDE
-  Serial.println("Estado: VERDE");
+  Serial.println("🟢 Estado: VERDE → Avanzar");
   digitalWrite(ledVerde, HIGH);
   digitalWrite(ledAmarillo, LOW);
   digitalWrite(ledRojo, LOW);
   delay(tiempoVerde);
 
-  // FASE 2: AMARILLO
-  Serial.println("Estado: AMARILLO (Precaución)");
+  Serial.println("🟡 Estado: AMARILLO → Precaución");
   digitalWrite(ledVerde, LOW);
   digitalWrite(ledAmarillo, HIGH);
   digitalWrite(ledRojo, LOW);
   delay(tiempoAmarillo);
 
-  // FASE 3: ROJO
-  Serial.println("Estado: ROJO");
+  Serial.println("🔴 Estado: ROJO → Detener");
   digitalWrite(ledVerde, LOW);
   digitalWrite(ledAmarillo, LOW);
   digitalWrite(ledRojo, HIGH);
@@ -280,19 +289,19 @@ void loop() {
 }
 ```
 
-### 🧠 Explicación del Código
-- Se definen constantes para los pines y tiempos, facilitando modificaciones futuras sin tocar la lógica.
-- El `loop()` implementa la secuencia estándar de semáforo: Verde → Amarillo → Rojo, de forma cíclica e infinita.
-- `delay()` pausa la ejecución el tiempo exacto de cada fase antes de pasar a la siguiente.
-- El Monitor Serie permite verificar en qué fase se encuentra el semáforo en cada momento.
+### 🧠 Explicación
+- Se definen constantes para pines y tiempos, facilitando modificaciones futuras.
+- El `loop()` implementa la secuencia Verde → Amarillo → Rojo de forma cíclica e infinita.
+- `delay()` pausa la ejecución el tiempo exacto de cada fase.
+- El Monitor Serie permite verificar en qué fase se encuentra el semáforo.
 
-
+---
 
 ## 📚 Conceptos Clave
 
 - **Compuertas lógicas:** Operaciones booleanas básicas de la electrónica digital (AND, OR, NOT).
-- **Binario a hexadecimal:** Sistema de numeración posicional; 4 bits representan un dígito hexadecimal (0–F).
-- **Display 7 segmentos:** Componente de salida que muestra dígitos activando combinaciones de 7 LEDs internos.
+- **Binario a hexadecimal:** 4 bits representan un dígito hexadecimal (0–F).
+- **Display 7 segmentos:** Muestra dígitos activando combinaciones de 7 LEDs internos.
 - **Semáforo con `delay()`:** Control temporal secuencial básico en sistemas embebidos.
 
 ---
