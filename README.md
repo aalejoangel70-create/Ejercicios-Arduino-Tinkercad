@@ -1,15 +1,9 @@
-# 🔌 Ejercicios con Arduino - Simulación en Tinkercad
+#  Ejercicios con Arduino - Simulación en Tinkercad
 
-**Curso:** Ingeniería de Sistemas  
+Ingeniería de Sistemas  
 **Plataforma de simulación:** [Tinkercad](https://www.tinkercad.com)  
-**Nombres** Alejandro Angel - Jorge Torrenegra
+**Nombres** Alejandro Angel Jimenez - Jorge Torrenegra Almanza
 ---
-##  Descripción General
-
-Este repositorio contiene el desarrollo de tres ejercicios prácticos usando Arduino UNO simulados en Tinkercad. Cada ejercicio aborda un concepto fundamental de electrónica digital
-
----
-
 ## Punto 1 — Simulación de Compuertas Lógicas (AND, NOT, OR)
 
 ### Enlace Tinkercad
@@ -115,7 +109,7 @@ Conversión de un número binario de 4 bits (ingresado mediante un DIP Switch) a
 **Lista de componentes:**  
 ![Componentes Punto 2](p2_componentes.png)
 
-### 🧰 Componentes
+### Componentes
 | Componente | Cantidad | Función |
 |---|---|---|
 | Arduino UNO (R3) | 1 | Controlador principal |
@@ -304,4 +298,3 @@ void loop() {
 
 ---
 
-*Simulaciones desarrolladas en Tinkercad · Arduino UNO · 2026*
