@@ -2,25 +2,23 @@
 
 **Curso:** Ingeniería de Sistemas  
 **Plataforma de simulación:** [Tinkercad](https://www.tinkercad.com)  
-**Fecha:** 29 de marzo de 2026
+**Nombres** Alejandro Angel - Jorge Torrenegra
+---
+##  Descripción General
+
+Este repositorio contiene el desarrollo de tres ejercicios prácticos usando Arduino UNO simulados en Tinkercad. Cada ejercicio aborda un concepto fundamental de electrónica digital
 
 ---
 
-## 📋 Descripción General
+## Punto 1 — Simulación de Compuertas Lógicas (AND, NOT, OR)
 
-Este repositorio contiene el desarrollo de tres ejercicios prácticos usando **Arduino UNO** simulados en Tinkercad. Cada ejercicio aborda un concepto fundamental de electrónica digital y programación embebida.
+### Enlace Tinkercad
+[Ver simulación en Tinkercad](https://www.tinkercad.com/things/1rCSZb31InG-mighty-vihelmo-amberis/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard)
 
----
+### Descripción
+Simulación del comportamiento de las compuertas lógicas fundamentales AND, OR y NOT mediante chips integrados reales conectados a un Arduino UNO. Las entradas se controlan con un DIP Switch y los resultados se visualizan a través de LEDs y el Monitor Serie.
 
-## ⚡ Punto 1 — Simulación de Compuertas Lógicas (AND, NOT, OR)
-
-### 🔗 Enlace Tinkercad
-[Ver simulación en Tinkercad](https://www.tinkercad.com/things/id1EKRqjbHu-daring-bruticus-lahdi/editel)
-
-### 📌 Descripción
-Simulación del comportamiento de las compuertas lógicas fundamentales **AND**, **OR** y **NOT** mediante chips integrados reales conectados a un Arduino UNO. Las entradas se controlan con un DIP Switch y los resultados se visualizan a través de LEDs y el Monitor Serie.
-
-### 🖼️ Evidencia Punto 1
+### Evidencia Punto 1
 
 **Esquemático del circuito:**  
 ![Esquemático Punto 1](p1_esquematico.png)
@@ -32,7 +30,7 @@ Simulación del comportamiento de las compuertas lógicas fundamentales **AND**,
 ![Simulación Punto 1 - Vista 1](p1_simulacion1.png)  
 ![Simulación Punto 1 - Vista 2](p1_simulacion2.png)
 
-### 🧰 Componentes
+### Componentes
 | Componente | Cantidad | Función |
 |---|---|---|
 | Arduino UNO | 1 | Controlador principal / Monitor Serie |
@@ -45,12 +43,12 @@ Simulación del comportamiento de las compuertas lógicas fundamentales **AND**,
 | Resistencias | varias | Protección de LEDs |
 | Protoboard | 1 | Montaje del circuito |
 
-### 🔌 Conexiones
-- **Entradas:** DIP Switch → Pines **A0** (Entrada A) y **A1** (Entrada B) del Arduino
+### Conexiones
+- **Entradas:** DIP Switch → Pines A0 (Entrada A) y A1 (Entrada B) del Arduino
 - **Salidas:** Chips 74HC conectados a LEDs para visualizar NOT A, AND, OR y XOR
 - **Alimentación:** 5V desde Arduino
 
-### 📊 Tabla de Verdad
+### Tabla de Verdad
 
 | A | B | NOT A | AND (A·B) | OR (A+B) |
 |:---:|:---:|:---:|:---:|:---:|
@@ -59,7 +57,7 @@ Simulación del comportamiento de las compuertas lógicas fundamentales **AND**,
 | 1 | 0 | 0 | 0 | 1 |
 | 1 | 1 | 0 | 1 | 1 |
 
-### 💻 Código
+### Código
 ```cpp
 /*
  * EJERCICIO CLASE - PUNTO 1
@@ -91,22 +89,22 @@ void loop() {
 }
 ```
 
-### 🧠 Explicación
+### Explicación
 - El Arduino lee el estado digital de A0 y A1 conectados al DIP Switch.
 - Calcula en software NOT, AND y OR para mostrarlos en el Monitor Serie.
 - Los chips 74HC realizan el cálculo físicamente en el circuito, encendiendo los LEDs correspondientes.
 
 ---
 
-## 🔢 Punto 2 — Conversor Binario a Hexadecimal
+## Punto 2 — Conversor Binario a Hexadecimal
 
-### 🔗 Enlace Tinkercad
-[Ver simulación en Tinkercad](https://www.tinkercad.com/things/aehavrkHCCA-epic-kieran-krunk/editel)
+### Enlace Tinkercad
+[Ver simulación en Tinkercad](https://www.tinkercad.com/things/aehavrkHCCA-epic-kieran-krunk/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits)
 
-### 📌 Descripción
-Conversión de un número binario de **4 bits** (ingresado mediante un DIP Switch) a su representante hexadecimal, visualizado en un **display de 7 segmentos de cátodo común**. Permite mostrar valores del **0 al F** (0–15 en decimal).
+### Descripción
+Conversión de un número binario de 4 bits (ingresado mediante un DIP Switch) a su representante hexadecimal, visualizado en un display de 7 segmentos de cátodo común. Permite mostrar valores del 0 al F (0–15 en decimal).
 
-### 🖼️ Evidencia Punto 2
+### Evidencia Punto 2
 
 **Circuito en Tinkercad:**  
 ![Circuito Punto 2](p2_circuito.png)
@@ -127,11 +125,11 @@ Conversión de un número binario de **4 bits** (ingresado mediante un DIP Switc
 | Resistencias 10 kΩ | 4 | Pull-down para el DIP Switch |
 | Protoboard | 1 | Montaje del circuito |
 
-### 🔌 Conexiones
+### Conexiones
 - **Entradas (DIP Switch):** A0=bit0 (1), A1=bit1 (2), A2=bit2 (4), A3=bit3 (8)
 - **Salidas (Display 7 seg):** Segmentos a–g → pines digitales **D2 al D8**
 
-### 📊 Conversión Binario → Hexadecimal
+###  Conversión Binario → Hexadecimal
 
 | Binario (A3 A2 A1 A0) | Decimal | Hexadecimal |
 |:---:|:---:|:---:|
@@ -144,7 +142,7 @@ Conversión de un número binario de **4 bits** (ingresado mediante un DIP Switc
 | 1100 | 12 | C |
 | 1111 | 15 | F |
 
-### 💻 Código
+### Código
 ```cpp
 /*
  * EJERCICIO CLASE - PUNTO 2
@@ -195,22 +193,22 @@ void escribirDisplay(int index) {
 }
 ```
 
-### 🧠 Explicación
+### Explicación
 - El DIP Switch actúa como número binario de 4 bits. Cada interruptor representa una potencia de 2 (1, 2, 4, 8).
 - Se suma el valor de cada bit activo para obtener el número decimal (0–15).
 - La función `escribirDisplay()` consulta la matriz `digitosHex` y enciende/apaga cada segmento del display.
 
 ---
 
-## 🚦 Punto 3 — Semáforo Vial con Tiempos
+##  Punto 3 — Semáforo Vial con Tiempos
 
 ### 🔗 Enlace Tinkercad
-[Ver simulación en Tinkercad](https://www.tinkercad.com/things/aehavrkHCCA-epic-kieran-krunk/editel)
+[Ver simulación en Tinkercad](https://www.tinkercad.com/things/id1EKRqjbHu-daring-bruticus-lahdi/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fall)
 
-### 📌 Descripción
-Simulación de un **semáforo vial** con tres LEDs (Verde, Amarillo, Rojo) que ciclan automáticamente respetando tiempos predefinidos para cada fase, con salida por Monitor Serie para seguimiento del estado actual.
+### Descripción
+Simulación de un semáforo vial con tres LEDs (Verde, Amarillo, Rojo) que ciclan automáticamente respetando tiempos predefinidos para cada fase, con salida por Monitor Serie para seguimiento del estado actual.
 
-### 🖼️ Evidencia Punto 3
+###  Evidencia Punto 3
 
 **Circuito en Tinkercad:**  
 ![Circuito Punto 3](p3_circuito.png)
@@ -221,7 +219,7 @@ Simulación de un **semáforo vial** con tres LEDs (Verde, Amarillo, Rojo) que c
 **Esquemático del circuito:**  
 ![Esquemático Punto 3](p3_esquematico.png)
 
-### 🧰 Componentes
+### Componentes
 | Componente | Cantidad | Función |
 |---|---|---|
 | Arduino UNO | 1 | Controlador principal |
@@ -231,21 +229,21 @@ Simulación de un **semáforo vial** con tres LEDs (Verde, Amarillo, Rojo) que c
 | Resistencias 150 Ω | 3 | Protección de LEDs |
 | Protoboard | 1 | Montaje del circuito |
 
-### 🔌 Conexiones
+### Conexiones
 | LED | Pin Arduino |
 |---|---|
 | Verde | D2 |
 | Amarillo | D3 |
 | Rojo | D4 |
 
-### ⏱️ Tiempos de Fase
+### Tiempos de Fase
 | Fase | Color | Duración |
 |---|---|---|
 | Avanzar | 🟢 Verde | 5 segundos |
 | Precaución | 🟡 Amarillo | 2 segundos |
 | Detener | 🔴 Rojo | 5 segundos |
 
-### 💻 Código
+### Código
 ```cpp
 /*
  * EJERCICIO CLASE - PUNTO 3
@@ -289,7 +287,7 @@ void loop() {
 }
 ```
 
-### 🧠 Explicación
+### Explicación
 - Se definen constantes para pines y tiempos, facilitando modificaciones futuras.
 - El `loop()` implementa la secuencia Verde → Amarillo → Rojo de forma cíclica e infinita.
 - `delay()` pausa la ejecución el tiempo exacto de cada fase.
@@ -297,7 +295,7 @@ void loop() {
 
 ---
 
-## 📚 Conceptos Clave
+## Conceptos Clave
 
 - **Compuertas lógicas:** Operaciones booleanas básicas de la electrónica digital (AND, OR, NOT).
 - **Binario a hexadecimal:** 4 bits representan un dígito hexadecimal (0–F).
