@@ -286,16 +286,7 @@ void loop() {
 - `delay()` pausa la ejecución el tiempo exacto de cada fase antes de pasar a la siguiente.
 - El Monitor Serie permite verificar en qué fase se encuentra el semáforo en cada momento.
 
----
 
-## 🛠️ Cómo usar este repositorio
-
-1. Abre el enlace de Tinkercad de cada ejercicio.
-2. Haz clic en **"Iniciar simulación"**.
-3. Para los ejercicios con DIP Switch, activa/desactiva los interruptores para ver el resultado.
-4. Abre el **Monitor Serie** (en Tinkercad: ícono de pantalla) para ver los mensajes del Arduino.
-
----
 
 ## 📚 Conceptos Clave
 
